@@ -17,3 +17,7 @@ func solution(_ s1:[String], _ s2:[String]) -> Int {
 
     return answer
 }
+
+func solution2(_ s1:[String], _ s2:[String]) -> Int {
+    return Set(s1).intersection(Set(s2)).count
+}
