@@ -11,12 +11,27 @@ if broken > 0 {
 // +혹은 -만 눌렀을 때, 버튼 누르는 횟수
 var answer = abs(n - 100)
 
+func checkCH(_ ch: Int) -> Bool {
+    if ch == 0 {
+        return !brokenSet.contains(0)
+    }
+
+    var tmp = ch
+    while tmp > 0 {
+        let target = tmp % 10
+        if brokenSet.contains(target) {
+            return false
+        }
+
+        tmp /= 10
+    }
+
+    return true
+}
+
 for ch in 0...999999 {
-    // 버튼을 눌러서 해당 채널로 이동 가능한지 체크
-    let chStr = String(ch)
-    let chSet = Set(chStr.map { Int(String($0))! })
-    if chSet.intersection(brokenSet).count == 0 {
-        answer = min(answer, chStr.count + abs(ch - n))
+    if checkCH(ch) {
+        answer = min(answer, String(ch).count + abs(ch - n))
     }
 }
 
