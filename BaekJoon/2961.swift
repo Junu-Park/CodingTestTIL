@@ -10,9 +10,9 @@ for _ in 0 ..< n {
 
 var answer = Int.max
 
-func recur(_ idx: Int = 0, _ s: Int = 1, _ b: Int = 0, _ count: Int = 0) {
+func recur(_ idx: Int = 0, _ s: Int = 1, _ b: Int = 0) {
     if idx == n {
-        if count != 0 {
+        if s != 1, b != 0 {
             answer = min(answer, abs(s - b))
         }
         
@@ -20,8 +20,8 @@ func recur(_ idx: Int = 0, _ s: Int = 1, _ b: Int = 0, _ count: Int = 0) {
     }
 
     // 재료 선택하거나, 안 하거나
-    recur(idx + 1, s * arr[idx].0, b + arr[idx].1, count + 1)
-    recur(idx + 1, s, b, count)
+    recur(idx + 1, s * arr[idx].0, b + arr[idx].1)
+    recur(idx + 1, s, b)
 }
 
 recur()
