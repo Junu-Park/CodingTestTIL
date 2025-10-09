@@ -21,9 +21,9 @@ func solution(_ my_string:String, _ s:Int, _ e:Int) -> String {
 }
 
 func solution2(_ my_string:String, _ s:Int, _ e:Int) -> String {
-    var arr = Array(my_string)
+    var arr = Array(my_string) // [Character]
     
     arr[s...e].reverse()
     
-    return String(arr)
+    return String(arr) // [Character]라서 가능
 }
