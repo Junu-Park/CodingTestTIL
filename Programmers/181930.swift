@@ -16,3 +16,15 @@ func solution(_ a:Int, _ b:Int, _ c:Int) -> Int {
 
     return Int(answer)
 }
+
+func solution2(_ a:Int, _ b:Int, _ c:Int) -> Int {
+    let numSet: Set<Int> = [a,b,c]
+
+    var answer: Double = 1
+    for i in 1...(4 - numSet.count) {
+        let double = Double(i)
+        answer *= pow(Double(a),double) + pow(Double(b),double) + pow(Double(c),double)
+    }
+    
+    return Int(answer)
+}
