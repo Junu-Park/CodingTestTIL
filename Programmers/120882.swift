@@ -42,3 +42,27 @@ func solution(_ score:[[Int]]) -> [Int] {
 
     return answer
 }
+
+// 케이스의 크기가 더 크다면 아래 풀이가 시간복잡도가 더 빠름
+func solution2(_ score:[[Int]]) -> [Int] {
+    let aver = score.map { (Double($0[0]) + Double($0[1])) / 2 }
+
+    let sorted = aver.enumerated().sorted { $0.element > $1.element }
+
+    var answer = Array(repeating: 0, count: aver.count)
+
+    var rank = 1
+    for i in sorted.indices {
+        let (offset, element) = sorted[i]
+
+        if i != 0, element == sorted[i - 1].element {
+            answer[offset] = answer[sorted[i - 1].offset]
+        } else {
+            answer[offset] = rank
+        }
+
+        rank += 1
+    }
+
+    return answer
+}
