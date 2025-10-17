@@ -10,6 +10,10 @@ func solution(_ num_list: [Int]) -> Int {
     return answer
 }
 
+func solution2(_ num_list: [Int]) -> Int {
+    return num_list.map { recur($0) }.reduce(0) { $0 + $1 }
+}
+
 func recur(_ num: Int, _ count: Int = 0) -> Int {
     if num == 1 {
         return count
