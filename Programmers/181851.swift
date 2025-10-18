@@ -21,3 +21,9 @@ func solution(_ rank: [Int], _ attendance: [Bool]) -> Int {
 
     return result[0] * 10000 + result[1] * 100 + result[2]
 }
+
+func solution2(_ rank: [Int], _ attendance: [Bool]) -> Int {
+    let result = rank.enumerated().filter { attendance[$0.offset] }.sorted { $0.element < $1.element }.prefix(3)
+
+    return result[0].offset * 10000 + result[1].offset * 100 + result[2].offset
+}
