@@ -9,3 +9,7 @@ func solution(_ order:[String]) -> Int {
         
     return answer
 }
+
+func solution2(_ order:[String]) -> Int {
+    return order.reduce(0) { $0 + ($1.contains("latte") ? 5000 : 4500)}
+}
