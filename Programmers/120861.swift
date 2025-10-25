@@ -9,12 +9,16 @@ func solution(_ keyinput:[String], _ board:[Int]) -> [Int] {
     
     for input in keyinput {
         let key = dict[input]!
-        if abs(xy[0]) < xMax || (key[0] > 0 && xy[0] <= -xMax) || (key[0] < 0 && xy[0] >= xMax) {
-            xy[0] += key[0]
+
+        let newX = xy[0] + key[0]
+        let newY = xy[1] + key[1]
+
+        if abs(newX) <= xMax {
+            xy[0] = newX
         }
-        
-        if abs(xy[1]) < yMax || (key[1] > 0 && xy[1] <= -yMax) || (key[1] < 0 && xy[1] >= yMax) {
-            xy[1] += key[1]
+
+        if abs(newY) <= yMax {
+            xy[1] = newY
         }
     }
     
