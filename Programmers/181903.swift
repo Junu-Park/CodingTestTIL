@@ -12,3 +12,7 @@ func solution(_ q:Int, _ r:Int, _ code:String) -> String {
     
     return String(answer)
 }
+
+func solution2(_ q:Int, _ r:Int, _ code:String) -> String {
+    return String(code.enumerated().filter { $0.offset % q == r }.map { $0.element })
+}
