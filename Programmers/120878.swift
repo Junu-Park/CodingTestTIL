@@ -6,7 +6,8 @@ func solution(_ a:Int, _ b:Int) -> Int {
 
     // 주어진 수 기약분수로 바꾸기
     // 최대공약수(GCD) 구하기 => 유클리드 호제법
-    let gcdValue = a > b ? gcd(b, a) : gcd(a, b)
+    // 유클리드 호제법은 순서가 상관 없음
+    let gcdValue = gcd(a, b)
 
     let newB = b / gcdValue
 
