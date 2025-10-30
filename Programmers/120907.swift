@@ -4,7 +4,7 @@ func solution(_ quiz:[String]) -> [String] {
     var answer: [String] = []
 
     for q in quiz {
-        let expression = q.split(separator: " ").map { String($0) }
+        let expression = q.split(separator: " ")
         let fir = Int(expression[0])!
         let oper = expression[1]
         let sec = Int(expression[2])!
