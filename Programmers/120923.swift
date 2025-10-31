@@ -1,15 +1,11 @@
 // 연속된 수의 합(120923)
 
 func solution(_ num: Int, _ total: Int) -> [Int] {
-    let centerValue = total / num
-    var centerIdx = num / 2
-    var answer = Array(repeating: centerValue, count: num)
+    let aver = total / num
+    let centerIdx = num % 2 == 0 ? (num / 2) - 1 : num / 2
+    var answer = Array(repeating: aver, count: num)
     
-    if num % 2 == 0 {
-        centerIdx -= 1
-    }
-    
-    for i in 0 ..< num {
+    for i in answer.indices {
         answer[i] += i - centerIdx
     }
     
