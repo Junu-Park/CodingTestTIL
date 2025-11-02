@@ -12,3 +12,13 @@ func solution(_ A:String, _ B:String) -> Int {
 
     return -1
 }
+
+func solution2(_ A:String, _ B:String) -> Int {
+    let full = B + B
+
+    if let range = full.range(of: A) {
+        return full.distance(from: full.startIndex, to: range.lowerBound)
+    } else {
+        return -1
+    }
+}
