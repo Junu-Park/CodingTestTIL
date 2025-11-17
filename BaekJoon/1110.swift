@@ -26,3 +26,20 @@ while num != tmp {
 }
 
 print(answer)
+
+// 추가 방법
+
+let n = Int(readLine()!)!
+var cur = n
+var answer = 0
+// repeat - while 구문: 최소 1회 이상 반복
+repeat {
+    let ten = cur % 10 
+    let sum = cur / 10 + ten
+    let one = sum % 10
+    cur = ten * 10 + one
+
+    answer += 1
+} while n != cur
+
+print(answer)
