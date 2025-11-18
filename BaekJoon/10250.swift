@@ -7,10 +7,17 @@ let t = Int(readLine()!)!
 for _ in 0 ..< t {
     let input = readLine()!.split(separator: " ").map { Int($0)! }
     let floor = input[0]
-    let order = input[2]
+    let guest = input[2]
 
-    let floorNum = order % floor == 0 ? floor : order % floor
-    let roomNum = order % floor == 0 ? order / floor : (order / floor) + 1
+    let floorNum: Int
+    let roomNum: Int
+    if guest % floor == 0 {
+        floorNum = floor
+        roomNum = guest / floor
+    } else {
+        floorNum = guest % floor
+        roomNum = (guest / floor) + 1
+    }
 
     print("\(floorNum)\(String(format: "%.2d", roomNum))")
 }
