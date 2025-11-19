@@ -28,3 +28,17 @@ for _ in 0..<t {
 
     print(answer)
 }
+
+// 다른 풀이
+// 주차 위치가 어디든 이동거리는 동일 => 양 끝 왕복한 거리
+let t = Int(readLine()!)!
+
+for _ in 0..<t {
+    let n = Int(readLine()!)!
+    let input = readLine()!.split(separator: " ").map { Int($0)! }
+    
+    let minPos = input.min()!
+    let maxPos = input.max()!
+    
+    print(2 * (maxPos - minPos))
+}
