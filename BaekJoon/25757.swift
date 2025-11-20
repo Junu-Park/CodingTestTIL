@@ -24,3 +24,17 @@ for _ in 0..<n {
 }
 
 print(answer)
+
+// 다른 풀이
+
+let input = readLine()!.split(separator: " ")
+let n = Int(input[0])!
+let requiredNum = ["Y": 1, "F": 2, "O": 3][input[1]]!
+
+var uniquePlayer: Set<String> = []
+
+for _ in 0..<n {
+    uniquePlayer.insert(readLine()!)
+}
+
+print(uniquePlayer.count / requiredNum)
