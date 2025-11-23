@@ -19,13 +19,8 @@ nums.sort()
 
 var isAllSameColor = colorsSet.count == 1
 
-var isContinue = true
-for i in 1...4 {
-    if nums[i - 1] + 1 != nums[i] {
-        isContinue = false
-        break
-    }
-}
+// 함수형, allSatisfy 메서드 사용
+let isContinue = (1..4).allSatisfy { nums[$0] == nums[$0 - 1] + 1 }
 
 var dupli4 = 0
 var dupli3 = 0
