@@ -1,17 +1,19 @@
 // 카드놀이(2621)
 
 var nums: [Int] = []
-var colors: [Character] = []
+var colorsSet: Set<Character> = []
 
 for _ in 0..<5 {
     let input = readLine()!.split(separator: " ")
 
     nums.append(Int(input[1])!)
-    colors.append(contentsOf: input[0])
+    colorsSet.insert(input[0].first!)
 }
 
-let numsSet = Set(nums)
-let colorsSet = Set(colors)
+var numsDict: [Int: Int] = [:]
+for num in nums {
+    numsDict[num, default: 0] += 1
+}
 
 nums.sort()
 
@@ -29,22 +31,21 @@ var dupli4 = 0
 var dupli3 = 0
 var dupli2 = 0
 var dupli22 = 0
-for n in numsSet {
-    let tempCnt = nums.filter { $0 == n }.count
-    if tempCnt == 4 {
-        dupli4 = n
+for (num, count) in numsDict {
+    if count == 4 {
+        dupli4 = num
         break
     }
 
-    if tempCnt == 3 {
-        dupli3 = n
+    if count == 3 {
+        dupli3 = num
     }
 
-    if tempCnt == 2 {
+    if count == 2 {
         if dupli2 != 0 {
-            dupli22 = n
+            dupli22 = num
         } else {
-            dupli2 = n
+            dupli2 = num
         }
     }
 }
