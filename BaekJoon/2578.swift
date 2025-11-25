@@ -9,6 +9,13 @@ for _ in 0 ..< 5 {
     board.append(input)
 }
 
+var position: [Int: (y: Int, x: Int)] = [:]
+for y in 0..<5 {
+    for x in 0..<5 {
+        position[board[y][x]] = (y, x)
+    }
+}
+
 var vis = Array(repeating: Array(repeating: false, count: 5), count: 5)
 
 var count = 0
@@ -16,7 +23,7 @@ var count = 0
 var answer = 0
 
 for _ in 0 ..< 5 {
-    let input = readLine()!.split(separator: " ").map { Int(String($0))! }
+    let input = readLine()!.split(separator: " ").map { Int($0)! }
 
     if answer != 0 { continue }
 
@@ -24,14 +31,9 @@ for _ in 0 ..< 5 {
         
         count += 1
         var result = 0
-        
-        outLoop: for y in 0 ..< 5 {
-            for x in 0 ..< 5 {
-                if board[y][x] == i {
-                    vis[y][x] = true
-                    break outLoop
-                }
-            }
+
+        if let pos = position[i] {
+            vis[pos.y][pos.x] = true
         }
 
         // 가로 확인
