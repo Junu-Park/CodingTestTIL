@@ -18,8 +18,13 @@ for y in 0..<5 {
 
 var vis = Array(repeating: Array(repeating: false, count: 5), count: 5)
 
-var count = 0
+var colBingo = Array(repeating: false, count: 5)
+var rowBingo = Array(repeating: false, count: 5)
+var diaBingo1 = false
+var diaBingo2 = false
 
+var callCount = 0
+var bingoCount = 0
 var answer = 0
 
 for _ in 0 ..< 5 {
@@ -29,39 +34,41 @@ for _ in 0 ..< 5 {
 
     for i in input {
         
-        count += 1
-        var result = 0
+        callCount += 1
 
-        if let pos = position[i] {
-            vis[pos.y][pos.x] = true
-        }
+        guard let pos = position[i] else { continue }
+        vis[pos.y][pos.x] = true
+        
+        var newBingo = 0
 
         // 가로 확인
-        for y in 0 ..< 5 {
-            if vis[y].allSatisfy { $0 } {
-                result += 1
-            }
+        if !rowBingo[pos.y] && vis[pos.y].allSatisfy { $0 } {
+            newBingo += 1
+            rowBingo[pos.y] = true
         }
 
         // 세로 확인
-        for x in 0 ..< 5 {
-            if (0...4).allSatisfy { vis[$0][x]} {
-                result += 1
-            }
+        if !colBingo[pos.x] && (0...4).allSatisfy { vis[$0][pos.x] } {
+            newBingo += 1
+            colBingo[pos.x] = true
         }
 
         // 좌측대각선 확인
-        if (0...4).allSatisfy { vis[$0][$0] } {
-            result += 1
+        if !diaBingo1 && (0...4).allSatisfy { vis[$0][$0] } {
+            newBingo += 1
+            diaBingo1 = true
         }
 
         // 우측대각선 확인
-        if (0...4).allSatisfy { vis[$0][4 - $0] } {
-            result += 1
+        if !diaBingo2 && (0...4).allSatisfy { vis[$0][4 - $0] } {
+            newBingo += 1
+            diaBingo2 = true
         }
 
-        if result >= 3 {
-            answer = count
+        bingoCount += newBingo
+
+        if bingoCount >= 3 {
+            answer = callCount
             break
         }
     }
