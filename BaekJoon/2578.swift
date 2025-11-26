@@ -54,13 +54,13 @@ for _ in 0 ..< 5 {
         }
 
         // 좌측대각선 확인
-        if !diaBingo1 && (0...4).allSatisfy { vis[$0][$0] } {
+        if pos.x == pos.y && !diaBingo1 && (0...4).allSatisfy { vis[$0][$0] } {
             newBingo += 1
             diaBingo1 = true
         }
 
         // 우측대각선 확인
-        if !diaBingo2 && (0...4).allSatisfy { vis[$0][4 - $0] } {
+        if pos.x + pos.y == 4 && !diaBingo2 && (0...4).allSatisfy { vis[$0][4 - $0] } {
             newBingo += 1
             diaBingo2 = true
         }
