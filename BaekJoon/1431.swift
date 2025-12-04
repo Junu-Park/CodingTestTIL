@@ -7,7 +7,7 @@ var serial: [(code: String, cnt: Int, sum: Int)] = []
 for _ in 0..<n {
     let code = readLine()!
     let cnt = code.count
-    let sum = code.reduce(0) { $0 + ($1.isNumber ? Int(String($1))! : 0) }
+    let sum = code.reduce(0) { $0 + ($1.wholeNumberValue ?? 0) }
     serial.append((code, cnt, sum))
 }
 
