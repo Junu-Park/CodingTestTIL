@@ -9,4 +9,4 @@ for _ in 0..<n {
     cards[input[0], default: 0] += Int(input[1])!
 }
 
-print(card.filter { $0.value == 5 }.count != 0 ? "YES" : "NO")
+print(cards.values.contains(5) ? "YES" : "NO")
