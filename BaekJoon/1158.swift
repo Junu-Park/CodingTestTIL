@@ -5,24 +5,19 @@ let n = nk[0]
 let k = nk[1] - 1
 
 var people = Array(1...n).map { String($0) }
-var front = 0
-var rear = n - 1
-var tmpK = k
+var idx = 0
 
 var answer = [String]()
 answer.reserveCapacity(n)
 
-while answer.count < n {
-    if front == tmpK {
-        answer.append(people[front])
-        front += 1
-        people = Array(people[front...])
-        front = 0
-        rear = n - 1
-    } else {
-        people.append(people[front])
-        front += 1
-        rear += 1
+while !people.isEmpty {
+    idx = (idx + k) % people.count
+
+    answer.append(people[idx])
+    people.remove(at: idx)
+
+    if idx == people.count {
+        idx = 0
     }
 }
 
