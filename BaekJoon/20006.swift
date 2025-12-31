@@ -7,9 +7,9 @@ let roomMax = input[1]
 var rooms = [[(lv: Int, name: String)]]()
 
 for _ in 0..<n {
-    let input = readLine()!.split(separator: " ").map { String($0) }
+    let input = readLine()!.split(separator: " ")
     let lv = Int(input[0])!
-    let name = input[1]
+    let name = String(input[1])
 
     var flag = false
 
